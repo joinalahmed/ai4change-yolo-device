@@ -1,5 +1,5 @@
-# config: private key and cert
-config/ai4change-yolo-one.*
+# config: private key
+config/ai4change-yolo-one.private.key
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

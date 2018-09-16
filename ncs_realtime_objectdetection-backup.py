@@ -21,7 +21,7 @@ COLORS = np.random.uniform(0, 255, size=(len(CLASSES), 3))
 
 # frame dimensions should be sqaure
 PREPROCESS_DIMS = (300, 300)
-DISPLAY_DIMS = (300, 300)
+DISPLAY_DIMS = (600, 600)
 
 # calculate the multiplier needed to scale the bounding boxes
 DISP_MULTIPLIER = DISPLAY_DIMS[0] // PREPROCESS_DIMS[0]
@@ -127,7 +127,7 @@ graph = device.AllocateGraph(graph_in_memory)
 # open a pointer to the video stream thread and allow the buffer to
 # start to fill, then start the FPS counter
 print("[INFO] starting the video stream and FPS counter...")
-vs = VideoStream(usePiCamera=True).start()
+vs = VideoStream(0).start()
 time.sleep(1)
 fps = FPS().start()
 

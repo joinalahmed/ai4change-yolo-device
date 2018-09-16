@@ -9,7 +9,9 @@ ________________
 .. code-block:: sh
 
     pip install AWSIoTPythonSDK
+    pip install configparser
     pip install imutils
+    pip instlal picamera
 
 
 Install Movidius SDK (as root)

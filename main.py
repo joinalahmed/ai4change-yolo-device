@@ -10,7 +10,7 @@ def customCallback(client, userdata, message):
     print(message.topic)
     print("--------------\n\n")
 
-topicIn = "aTopic"
+topicIn = "products"
 
 communication = Communication()
 
@@ -23,10 +23,10 @@ time.sleep(2)
 loopCount = 0
 while True:
     message = {}
-    message['message'] = "bla bla"
+    message['product'] = "tomato"
     message['sequence'] = loopCount
     messageJson = json.dumps(message)
     communication.publish(topicIn, messageJson)
     print('Published topic %s: %s\n' % (topicIn, messageJson))
     loopCount += 1
-    time.sleep(2)
+    time.sleep(10)

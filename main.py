@@ -1,32 +1,36 @@
-import time
 import json
+import os
+import cv2
+import time
 from communication import Communication
 
-# Custom MQTT message callback
-def customCallback(client, userdata, message):
-    print("Received a new message: ")
-    print(message.payload)
-    print("from topic: ")
-    print(message.topic)
-    print("--------------\n\n")
+image_base_path = os.path.join(os.getcwd(), "images")
+image_extension = "jpg"
 
-topicIn = "products"
+mqtt_topic = "advice"
+
+def get_recommendation_from_json (raw_json):
+    parsed_json = raw_json['output']['recommendation']
+    return parsed_json
+
+
+def show_image(image_base_path, image_name, image_extension):
+    img = cv2.imread(os.path.join(image_base_path, (image_name + "." + image_extension)))
+    cv2.imshow(image_name, img)
+    cv2.waitKey(6000)
+    cv2.destroyAllWindows()
+
+def customCallback(client, userdata, message):
+	raw_json = json.loads(message.payload)
+	recommendation = get_recommendation_from_json(raw_json)
+	show_image(image_base_path, recommendation, image_extension)
+
 
 communication = Communication()
 
-# Connect and subscribe to AWS IoT
 communication.connect()
-communication.subscribe("#", customCallback)
-time.sleep(2)
-
-# Publish to the topic in a loop forever
-loopCount = 0
+communication.subscribe(mqtt_topic, customCallback)
 while True:
-    message = {}
-    message['product'] = "tomato"
-    message['sequence'] = loopCount
-    messageJson = json.dumps(message)
-    communication.publish(topicIn, messageJson)
-    print('Published topic %s: %s\n' % (topicIn, messageJson))
-    loopCount += 1
-    time.sleep(10)
+	time.sleep(10)
+
+

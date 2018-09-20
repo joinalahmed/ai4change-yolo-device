@@ -9,7 +9,7 @@ def lambda_handler(event, context):
         "banana": "apple_green",
         "coca_cola": "sweets_7_days",
         "egg": "water",
-        "grape": "banana"
+        "grape": "banana",
         "pepper_red": "egg",
         "sweets_7_days": "sweets_snickers",
         "sweets_mms": "coca_cola",
@@ -26,3 +26,4 @@ def lambda_handler(event, context):
         return {
             "recommendation": "nothing"
         }
+        

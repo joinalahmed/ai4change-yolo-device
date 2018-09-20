@@ -15,10 +15,10 @@ def get_recommendation_from_json (raw_json):
     parsed_json = raw_json['output']['recommendation']
     return parsed_json
 
-
 def show_image(image_base_path, image_name, image_extension):
     img = cv2.imread(os.path.join(image_base_path, (image_name + "." + image_extension)))
-    cv2.imshow(image_name, img)
+    img_resized = cv2.resize(img, (480, 320))
+    cv2.imshow(image_name, img_resized)
     cv2.waitKey(6000)
     cv2.destroyAllWindows()
 

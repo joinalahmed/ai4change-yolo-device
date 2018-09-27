@@ -11,7 +11,8 @@ ________________
     pip install AWSIoTPythonSDK
     pip install configparser
     pip install imutils
-    pip instlal picamera
+    pip install picamera
+    pip install opencv-python
 
 
 Install Movidius SDK (as root)

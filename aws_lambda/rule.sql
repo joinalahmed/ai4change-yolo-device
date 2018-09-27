@@ -1,1 +1,0 @@
-SELECT aws_lambda("arn:aws:lambda:eu-west-1:123352781277:function:makeAdvice",*) as output FROM 'products'

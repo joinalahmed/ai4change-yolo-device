@@ -3,10 +3,15 @@ AI4Change Yolo Device
 It this repository you will find the code used directly on Rapsberry Pi with a Intel Movidius Neural Stick. For the backend/cloud component of the solution, see ai4change-yolo-backend repository.
 
 The workflow of the solution is following:
+
 1. RaspberryPi and Intel Movidius are used to recognize an item seen by a camera.
+
 2. The name of recognized item is sent to AWS via MQTT (using "products" topic).
+
 3. On AWS the recommendation is generated (using AWS Lambda).
+
 4. The recommendation is sent back to RaspberryPi via MQTT (using "advice" topic).
+
 5. Based on the reciveded recommendation, the image is displayed on the screen.
 
 For deployment instructions see below.

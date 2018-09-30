@@ -11,8 +11,10 @@
 # Imports
 import json
 import os
-import cv2
 import time
+
+import cv2
+
 from communication import Communication
 
 # Set parameters
@@ -37,9 +39,10 @@ def show_image(image_base_path, image_name, image_extension):
 
 # Put everything together into the workflow
 def customCallback(client, userdata, message):
-	raw_json = json.loads(message.payload)
-	recommendation = get_recommendation_from_json(raw_json)
-	show_image(image_base_path, recommendation, image_extension)
+    str = message.payload.decode('utf-8')
+    raw_json = json.loads(str)
+    recommendation = get_recommendation_from_json(raw_json)
+    show_image(image_base_path, recommendation, image_extension)
 
 # initialize Communication with AWS and subscribe "advice" topic
 communication = Communication()
@@ -47,6 +50,4 @@ communication.connect()
 communication.subscribe(mqtt_topic, customCallback)
 
 while True:
-	time.sleep(10)
-
-
+    time.sleep(10)

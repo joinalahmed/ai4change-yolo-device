@@ -16,6 +16,8 @@ The workflow of the solution is following:
 
 For deployment instructions see below.
 
+![Alt text](_graphics/img1.jpg?raw=true "Title")
+
 Install needed python libraries (from pip)
 ________________
 
